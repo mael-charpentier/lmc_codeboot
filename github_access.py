@@ -12,4 +12,4 @@ write_file('lmc.html', read_file('https://raw.githubusercontent.com/mael-charpen
 show_file('lmc.py', True)
 
 # run the code
-import lmc
+from lmc import *
