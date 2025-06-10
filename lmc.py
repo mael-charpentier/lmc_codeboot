@@ -686,7 +686,12 @@ class Display:
         self.create_table()
         time.sleep(0.5)
         
-        list_instructions = "|".join(InstructionSet.INSTRUCTIONS.keys())
+        list_instructions = ""
+        for instr in InstructionSet.INSTRUCTIONS:
+            for cat in instr:
+                list_instructions += f"[{cat.upper()}{cat.lower()}]"
+            list_instructions += "|"
+        list_instructions = list_instructions[:-1]
         while True:
             try:
                 js.host_eval(f"""
