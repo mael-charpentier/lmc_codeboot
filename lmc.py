@@ -214,19 +214,20 @@ class LMC:
         self.isRunning = False
         self.memory_size = DEFAULTS["memory_size"]
 
-    def reset(self, reset_dom = False):
-        self.memory = []
-        self.labels = {}
-        self.program = []
-        self.accumulator = 0
-        self.accumulator_pixels = {
-            "x": 0,
-            "y": 0,
-            "r": 0,
-            "g": 0,
-            "b": 0
-        }
-        self.pc = 0
+    def reset(self, all_variable = False, reset_dom = False):
+        if all_variable:
+            self.memory = []
+            self.labels = {}
+            self.program = []
+            self.accumulator = 0
+            self.accumulator_pixels = {
+                "x": 0,
+                "y": 0,
+                "r": 0,
+                "g": 0,
+                "b": 0
+            }
+            self.pc = 0
         self.step = DEFAULTS["begin_step"]
         self.stack_input = []
         self.line_instruction = {}
@@ -412,7 +413,7 @@ class LMC:
             if source_code == "":
                 source_code = display.editor_CodeMirror.getValue()
 
-            self.reset(reset_dom=True)  # Reset state
+            self.reset(all_variable = True, reset_dom=True)  # Reset state
 
             lines = source_code.upper().splitlines()
 
