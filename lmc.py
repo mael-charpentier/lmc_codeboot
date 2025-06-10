@@ -372,6 +372,7 @@ class LMC:
         dom.set_disable("lmc-run-button", False)
         dom.set_disable("lmc-break-button", True)
         self.break_run = True
+        self.isRunning = False
     
     def stop(self):
         """
@@ -516,7 +517,7 @@ class LMC:
                     if interaction_other:
                         val = int(prompt("Enter a number: "))
                     else:
-                        self.stack_input_last.pop(0)
+                        val = self.stack_input_last.pop(0)
                 except Exception:
                     val = 0
                     alert("Invalid input; defaulting to 0.")
